@@ -61,6 +61,6 @@ jobs:
 #      run: conda init
     - name: Test with pytest
       run: |
-        $env:Path = "c:/Miniconda/Library/mingw-w64/bin;$env:Path"
+        $env:Path = "c:\/Miniconda/Library/mingw-w64/bin;$env:Path"
         conda install pytest && conda info && conda env list && conda list && which python && which pytest && pytest .github/workflows/test_environments.py
 #        conda activate ensembles-labs && conda install pytest && conda list && which python && which pytest && pytest tests.py
