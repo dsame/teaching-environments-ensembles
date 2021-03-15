@@ -33,8 +33,10 @@ jobs:
         wmic os get osarchitecture && dir c:\Windows\System32\vc*.dll
         
     - name: Add VS C++ DLLs to the PATH
+      shell: bash
       if: matrix.os == 'windows-latest'
-      run: echo "c:\Windows\System32\" >> $GITHUB_PATH
+      run: |
+        echo "c:\\Miniconda\\Library\\mingw-w64\\bin" >> $GITHUB_PATH
     
 #    - name: Install VS C++ Distributables
 #      uses: crazy-max/ghaction-chocolatey@v1.4.0
@@ -60,7 +62,6 @@ jobs:
 #    - name: Initialize conda shell
 #      run: conda init
     - name: Test with pytest
-      run: |
-        $env:Path = "c:\Miniconda\Library\mingw-w64\bin;$env:Path"
+      run:
         conda install pytest && conda info && conda env list && conda list && which python && which pytest && pytest .github/workflows/test_environments.py
 #        conda activate ensembles-labs && conda install pytest && conda list && which python && which pytest && pytest tests.py
